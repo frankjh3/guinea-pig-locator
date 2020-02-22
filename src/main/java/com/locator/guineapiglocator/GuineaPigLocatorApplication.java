@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
 @SpringBootApplication
 public class GuineaPigLocatorApplication {
 
@@ -13,8 +12,4 @@ public class GuineaPigLocatorApplication {
 		SpringApplication.run(GuineaPigLocatorApplication.class, args);
 	}
 
-	@RequestMapping("/")
-	public String helloWorld() {
-		return "Hello World!";
-	}
 }
