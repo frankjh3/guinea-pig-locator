@@ -22,7 +22,6 @@ public class GuineaPigService {
     }
 
     public GuineaPig addGuineaPig(GuineaPig guineaPig) {
-        System.out.println(guineaPig.toString());
         return guineaPigRepository.save(guineaPig);
     }
 
@@ -48,8 +47,9 @@ public class GuineaPigService {
                     guineaPig.setDescription(newGuineaPig.getDescription());
                     guineaPig.setDob(newGuineaPig.getDob());
                     guineaPig.setGender(newGuineaPig.getGender());
-                    guineaPig.setListingType(newGuineaPig.getListingType());
-                    guineaPig.setLocation(newGuineaPig.getLocation());
+                    guineaPig.setPrice(newGuineaPig.getPrice());
+                    guineaPig.setNeutered(newGuineaPig.isNeutered());
+                    guineaPig.setListing(newGuineaPig.getListing());
                     return guineaPigRepository.save(guineaPig);
                 })
                 .orElseGet(() -> {
