@@ -154,19 +154,19 @@ public class GuineaPig {
         isNeutered = neutered;
     }
 
-//    @Override
-//    public String toString() {
-//        return "GuineaPig{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                ", adopted=" + adopted +
-//                ", gender=" + gender +
-//                ", breed=" + breed +
-//                ", dob=" + dob +
-//                ", description='" + description + '\'' +
-//                ", isNeutered=" + isNeutered +
-//                ", price=" + price +
-//                ", listing=" + listing +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "GuineaPig{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", adopted=" + adopted +
+                ", gender=" + gender +
+                ", breed=" + breed +
+                ", dob=" + dob +
+                ", description='" + description + '\'' +
+                ", isNeutered=" + isNeutered +
+                ", price=" + price +
+                ", listing=" + listing +
+                '}';
+    }
 }

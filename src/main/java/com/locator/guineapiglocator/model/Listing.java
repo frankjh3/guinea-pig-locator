@@ -125,17 +125,17 @@ public class Listing {
         this.guineaPigs = guineaPigs;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Listing{" +
-//                "id=" + id +
-//                ", dateListed=" + timeListed +
-//                ", isActive=" + isActive +
-//                ", location='" + location + '\'' +
-//                ", numGuineaPigs=" + numGuineaPigs +
-//                ", mustAdoptTogether=" + mustAdoptTogether +
-//                ", listingType=" + listingType +
-//                ", guineaPigs=" + guineaPigs +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "Listing{" +
+                "id=" + id +
+                ", dateListed=" + timeListed +
+                ", isActive=" + isActive +
+                ", location='" + location + '\'' +
+                ", numGuineaPigs=" + numGuineaPigs +
+                ", mustAdoptTogether=" + mustAdoptTogether +
+                ", listingType=" + listingType +
+                ", guineaPigs=" + guineaPigs +
+                '}';
+    }
 }

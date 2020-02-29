@@ -28,8 +28,7 @@ public class ListingService {
     }
 
     public List<Listing> getAllListings() {
-        List<Listing> lists = listingRepository.findAll();
-        return lists;
+        return listingRepository.findAll();
     }
 
     public Listing getListingByID(int id) {
