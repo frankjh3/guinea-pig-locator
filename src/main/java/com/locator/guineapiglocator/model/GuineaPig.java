@@ -40,8 +40,6 @@ public class GuineaPig {
     @Temporal(TemporalType.DATE)
     private Date dob;
 
-    private String description;
-
     private boolean isNeutered;
 
     private double price;
@@ -57,7 +55,6 @@ public class GuineaPig {
                      Gender gender,
                      Breed breed,
                      Date dob,
-                     String description,
                      boolean isNeutered,
                      double price) {
         this.id = id;
@@ -66,7 +63,6 @@ public class GuineaPig {
         this.gender = gender;
         this.breed = breed;
         this.dob = dob;
-        this.description = description;
         this.isNeutered = isNeutered;
         this.price = price;
     }
@@ -122,14 +118,6 @@ public class GuineaPig {
         this.dob = dob;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public double getPrice() {
         return price;
     }
@@ -163,7 +151,6 @@ public class GuineaPig {
                 ", gender=" + gender +
                 ", breed=" + breed +
                 ", dob=" + dob +
-                ", description='" + description + '\'' +
                 ", isNeutered=" + isNeutered +
                 ", price=" + price +
                 ", listing=" + listing +

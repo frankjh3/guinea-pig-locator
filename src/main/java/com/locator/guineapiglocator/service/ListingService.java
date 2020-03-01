@@ -13,14 +13,17 @@ import java.util.List;
 public class ListingService {
 
     private final ListingRepository listingRepository;
+    private final LocationService locationService;
 
     @Autowired
-    public ListingService(ListingRepository listingRepository) {
+    public ListingService(ListingRepository listingRepository, LocationService locationService) {
         this.listingRepository = listingRepository;
+        this.locationService = locationService;
     }
 
     public Listing addListing(Listing listing) {
         listing.setTimeListed(LocalDateTime.now());
+        listing.setActive(true);
         for(GuineaPig guineaPig : listing.getGuineaPigs()) {
             guineaPig.setListing(listing);
         }
@@ -50,6 +53,7 @@ public class ListingService {
                     listing.setLocation(newListing.getLocation());
                     listing.setMustAdoptTogether(newListing.isMustAdoptTogether());
                     listing.setNumGuineaPigs(newListing.getNumGuineaPigs());
+                    listing.setDescription(newListing.getDescription());
                     return listingRepository.save(listing);
                 })
                 .orElseGet(() -> {

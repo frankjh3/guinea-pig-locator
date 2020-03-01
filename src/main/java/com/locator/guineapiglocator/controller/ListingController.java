@@ -25,6 +25,7 @@ public class ListingController {
 
     @PostMapping
     public void addListing(@Valid @NonNull @RequestBody Listing listing) {
+        System.out.println(listing);
         this.listingService.addListing(listing);
     }
 

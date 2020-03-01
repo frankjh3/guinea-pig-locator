@@ -1,5 +1,7 @@
 package com.locator.guineapiglocator.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -26,16 +28,24 @@ public class Listing {
     // set to false if all guinea pigs are adopted or listing is removed
     private boolean isActive;
 
-    // change to more specific data type - for now just store as string
-    private String location;
-
     private int numGuineaPigs;
 
     private boolean mustAdoptTogether;
 
+    private String description;
+
+    private String email;
+
+    private String phone;
+
     @Enumerated(EnumType.STRING)
     @Column(length = 8)
     private ListingType listingType;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @JoinColumn(name = "location_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private Location location;
 
     @OneToMany(mappedBy = "listing", cascade=CascadeType.ALL, targetEntity = GuineaPig.class, fetch = FetchType.LAZY)
     private List<GuineaPig> guineaPigs;
@@ -43,9 +53,12 @@ public class Listing {
     public Listing(Integer id,
                    LocalDateTime timeListed,
                    boolean isActive,
-                   String location,
+                   Location location,
                    int numGuineaPigs,
                    boolean mustAdoptTogether,
+                   String description,
+                   String email,
+                   String phone,
                    ListingType listingType,
                    List<GuineaPig> guineaPigs) {
         this.id = id;
@@ -54,6 +67,9 @@ public class Listing {
         this.location = location;
         this.numGuineaPigs = numGuineaPigs;
         this.mustAdoptTogether = mustAdoptTogether;
+        this.description = description;
+        this.email = email;
+        this.phone = phone;
         this.listingType = listingType;
         this.guineaPigs = guineaPigs;
     }
@@ -85,11 +101,11 @@ public class Listing {
         isActive = active;
     }
 
-    public String getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
 
@@ -125,15 +141,42 @@ public class Listing {
         this.guineaPigs = guineaPigs;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     @Override
     public String toString() {
         return "Listing{" +
                 "id=" + id +
-                ", dateListed=" + timeListed +
+                ", timeListed=" + timeListed +
                 ", isActive=" + isActive +
                 ", location='" + location + '\'' +
                 ", numGuineaPigs=" + numGuineaPigs +
                 ", mustAdoptTogether=" + mustAdoptTogether +
+                ", description='" + description + '\'' +
+                ", email='" + email + '\'' +
+                ", phone=" + phone +
                 ", listingType=" + listingType +
                 ", guineaPigs=" + guineaPigs +
                 '}';
