@@ -12,16 +12,18 @@ class GuineaPigGenders extends Component {
     const numFemales = this.numGender("FEMALE");
     return (
       <React.Fragment>
-        {numMales > 0 ? numMales + " males" : ""}
+        {numMales > 0 ? numMales + " male" : ""}
+        {numMales > 1 ? "s" : ""}
         {numMales > 0 && numFemales > 0 ? ", " : ""}
-        {numFemales > 0 ? numFemales + " females" : ""}
+        {numFemales > 0 ? numFemales + " female" : ""}
+        {numFemales > 1 ? "s" : ""}
       </React.Fragment>
     );
   }
 }
 
 GuineaPigGenders.propTypes = {
-  guineaPigs: PropTypes.object.isRequired
+  guineaPigs: PropTypes.array.isRequired
 };
 
 export default GuineaPigGenders;

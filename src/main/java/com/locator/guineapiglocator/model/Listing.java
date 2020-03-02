@@ -38,6 +38,10 @@ public class Listing {
 
     private String phone;
 
+    private String title;
+
+    private int price;
+
     @Enumerated(EnumType.STRING)
     @Column(length = 8)
     private ListingType listingType;
@@ -59,6 +63,8 @@ public class Listing {
                    String description,
                    String email,
                    String phone,
+                   String title,
+                   int price,
                    ListingType listingType,
                    List<GuineaPig> guineaPigs) {
         this.id = id;
@@ -70,6 +76,8 @@ public class Listing {
         this.description = description;
         this.email = email;
         this.phone = phone;
+        this.title = title;
+        this.price = price;
         this.listingType = listingType;
         this.guineaPigs = guineaPigs;
     }
@@ -165,19 +173,38 @@ public class Listing {
         this.phone = phone;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+
     @Override
     public String toString() {
         return "Listing{" +
                 "id=" + id +
                 ", timeListed=" + timeListed +
                 ", isActive=" + isActive +
-                ", location='" + location + '\'' +
                 ", numGuineaPigs=" + numGuineaPigs +
                 ", mustAdoptTogether=" + mustAdoptTogether +
                 ", description='" + description + '\'' +
                 ", email='" + email + '\'' +
-                ", phone=" + phone +
+                ", phone='" + phone + '\'' +
+                ", title='" + title + '\'' +
+                ", price=" + price +
                 ", listingType=" + listingType +
+                ", location=" + location +
                 ", guineaPigs=" + guineaPigs +
                 '}';
     }

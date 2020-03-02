@@ -46,7 +46,6 @@ public class GuineaPigService {
                     guineaPig.setBreed(newGuineaPig.getBreed());
                     guineaPig.setDob(newGuineaPig.getDob());
                     guineaPig.setGender(newGuineaPig.getGender());
-                    guineaPig.setPrice(newGuineaPig.getPrice());
                     guineaPig.setNeutered(newGuineaPig.isNeutered());
                     guineaPig.setListing(newGuineaPig.getListing());
                     return guineaPigRepository.save(guineaPig);

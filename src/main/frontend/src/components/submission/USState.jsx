@@ -9,10 +9,10 @@ class USState extends Component {
           State <span style={{ color: "red" }}>*</span>
         </label>
         <select
-          onChange={this.props.onChange}
           id="inputState"
           className="form-control"
           name="state"
+          onChange={this.props.onChange}
           value={this.props.location.state}
         >
           <option value="empty" disabled>

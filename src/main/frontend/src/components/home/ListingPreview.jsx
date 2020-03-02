@@ -12,7 +12,8 @@ class ListingPreview extends Component {
       mustAdoptTogether,
       numGuineaPigs,
       timeListed,
-      guineaPigs
+      guineaPigs,
+      title
     } = this.props.listing;
     return (
       <div className="col-md-4 mb-4">
@@ -24,10 +25,11 @@ class ListingPreview extends Component {
               alt="Card image cap"
             />
           </div>
-          <div className="card-body">
-            <h5 className="card-title mb-2">
+          <div className="card-body text-center">
+            <h5 className="card-title mb-3">{title}</h5>
+            <h6 className="card-subtitle mb-2">
               {location.city}, {location.state}
-            </h5>
+            </h6>
             <p className="card-text mb-2">
               {numGuineaPigs} guinea pigs,{" "}
               {mustAdoptTogether ? "Must adopt together" : "Can adopt separate"}

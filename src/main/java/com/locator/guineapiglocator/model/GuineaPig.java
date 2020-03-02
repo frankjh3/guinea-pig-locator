@@ -42,8 +42,6 @@ public class GuineaPig {
 
     private boolean isNeutered;
 
-    private double price;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "listing_id")
     @JsonIgnore
@@ -55,8 +53,7 @@ public class GuineaPig {
                      Gender gender,
                      Breed breed,
                      Date dob,
-                     boolean isNeutered,
-                     double price) {
+                     boolean isNeutered) {
         this.id = id;
         this.name = name;
         this.adopted = adopted;
@@ -64,7 +61,6 @@ public class GuineaPig {
         this.breed = breed;
         this.dob = dob;
         this.isNeutered = isNeutered;
-        this.price = price;
     }
 
     public GuineaPig() {
@@ -118,14 +114,6 @@ public class GuineaPig {
         this.dob = dob;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     public Listing getListing() {
         return listing;
     }
@@ -152,7 +140,6 @@ public class GuineaPig {
                 ", breed=" + breed +
                 ", dob=" + dob +
                 ", isNeutered=" + isNeutered +
-                ", price=" + price +
                 ", listing=" + listing +
                 '}';
     }
