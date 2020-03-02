@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import FormGroupText from "./FormGroupText";
+
 class GuineaPigItem extends Component {
   render() {
     const { id, name, gender, isNeutered, age, breed } = this.props.guineaPig;
@@ -9,18 +11,18 @@ class GuineaPigItem extends Component {
       <React.Fragment>
         <h3>Guinea pig {id + 1}</h3>
         <div className="form-row">
-          <div className="form-group col-sm">
-            <label htmlFor={"inputName" + id}>Name</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter name of guinea pig"
-              id={"inputName" + id}
-              name="name"
-              onChange={this.props.onChange.bind(this, id)}
-              value={name}
-            />
-          </div>
+          <FormGroupText
+            groupClass="col-sm"
+            label="Name"
+            isRequired={false}
+            type="text"
+            placeholder="Enter name of guinea pig"
+            name="name"
+            id={"name" + id}
+            onChange={this.props.onChange.bind(this, id)}
+            value={name}
+          />
+
           <div className="form-group col-sm">
             <label htmlFor={"inputGender" + id}>Gender {redStar}</label>
             <select
@@ -56,20 +58,17 @@ class GuineaPigItem extends Component {
           </div>
         </div>
         <div className="form-row">
-          <div className="form-group col-sm">
-            <label htmlFor={"inputAge" + id}>
-              Approximate age (specify weeks/months/years) {redStar}
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter approxmiate age"
-              id={"inputAge" + id}
-              name="age"
-              onChange={this.props.onChange.bind(this, id)}
-              value={age}
-            />
-          </div>
+          <FormGroupText
+            groupClass="col-sm"
+            label="Approximate age (specify weeks/months/years)"
+            isRequired={true}
+            type="text"
+            placeholder="Enter approximate age"
+            name="age"
+            id={"age" + id}
+            onChange={this.props.onChange.bind(this, id)}
+            value={age}
+          />
           <div className="form-group col-sm">
             <label htmlFor={"inputBreed" + id}>Breed</label>
             <select

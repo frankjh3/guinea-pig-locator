@@ -28,7 +28,7 @@ class Header extends Component {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/submission">
-                    Submit guinea pig for adoption
+                    Submit guinea pigs for adoption
                   </Link>
                 </li>
                 <li className="nav-item">

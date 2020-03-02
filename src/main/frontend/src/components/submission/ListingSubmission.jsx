@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import USState from "./USState";
+import FormGroupText from "./FormGroupText";
 
 class ListingSubmission extends Component {
   render() {
@@ -24,20 +25,16 @@ class ListingSubmission extends Component {
         <h1>Create new listing</h1>
         <p>{redStar} = required</p>
         <div className="form-row">
-          <div className="form-group col-sm">
-            <label htmlFor="inputNumPigs">
-              Number of guinea pigs {redStar}
-            </label>
-            <input
-              type="number"
-              className="form-control"
-              placeholder="Enter number of guinea pigs"
-              id="inputNumPigs"
-              name="numGuineaPigs"
-              onChange={this.props.onChange}
-              value={numGuineaPigs}
-            />
-          </div>
+          <FormGroupText
+            groupClass="col-sm"
+            label="Number of guinea pigs"
+            isRequired={true}
+            type="number"
+            placeholder="Enter number of guinea pigs"
+            name="numGuineaPigs"
+            onChange={this.props.onChange}
+            value={numGuineaPigs}
+          />
           <div className="form-group col-sm align-self-end">
             <div className="form-check">
               <input
@@ -56,18 +53,16 @@ class ListingSubmission extends Component {
               </label>
             </div>
           </div>
-          <div className="form-group col-sm">
-            <label htmlFor="inputPrice">Total asking price (in dollars)</label>
-            <input
-              type="number"
-              className="form-control"
-              placeholder="Enter asking price"
-              id="inputPrice"
-              name="price"
-              onChange={this.props.onChange}
-              value={price}
-            />
-          </div>
+          <FormGroupText
+            groupClass="col-sm"
+            label="Total asking price (in dollars)"
+            isRequired={false}
+            type="number"
+            placeholder="Enter asking price"
+            name="price"
+            onChange={this.props.onChange}
+            value={price}
+          />
           <div className="form-group col-sm">
             <label htmlFor="inputListingType">Type of listing {redStar}</label>
             <select
@@ -84,71 +79,61 @@ class ListingSubmission extends Component {
           </div>
         </div>
         <div className="form-row">
-          <div className="form-group col-md-6">
-            <label htmlFor="inputCity">City {redStar}</label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputCity"
-              name="city"
-              placeholder="Enter city"
-              onChange={this.props.onChange}
-              value={city}
-            />
-          </div>
+          <FormGroupText
+            groupClass="col-md-6"
+            label="City"
+            isRequired={true}
+            type="text"
+            placeholder="Enter city"
+            name="city"
+            onChange={this.props.onChange}
+            value={city}
+          />
           <USState state={state} onChange={this.props.onChange} />
-          <div className="form-group col-md-2">
-            <label htmlFor="inputZip">Zip {redStar}</label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputZip"
-              name="zip"
-              placeholder="Enter zip code"
-              onChange={this.props.onChange}
-              value={zip}
-            />
-          </div>
+          <FormGroupText
+            groupClass="col-md-2"
+            label="Zip"
+            isRequired={true}
+            type="text"
+            placeholder="Enter zip code"
+            name="zip"
+            onChange={this.props.onChange}
+            value={zip}
+          />
         </div>
         <div className="form-row">
-          <div className="form-group col-md-7">
-            <label htmlFor="inputEmail">Email {redStar}</label>
-            <input
-              type="email"
-              className="form-control"
-              id="inputEmail"
-              name="email"
-              placeholder="Enter email"
-              onChange={this.props.onChange}
-              value={email}
-            />
-          </div>
-          <div className="form-group col-md-5">
-            <label htmlFor="inputPhone">Phone number {redStar}</label>
-            <input
-              type="tel"
-              className="form-control"
-              id="inputPhone"
-              name="phone"
-              placeholder="Enter phone number"
-              onChange={this.props.onChange}
-              value={phone}
-            />
-          </div>
+          <FormGroupText
+            groupClass="col-md-7"
+            label="Email"
+            isRequired={true}
+            type="email"
+            placeholder="Enter email"
+            name="email"
+            onChange={this.props.onChange}
+            value={email}
+          />
+          <FormGroupText
+            groupClass="col-md-5"
+            label="Phone number"
+            isRequired={false}
+            type="tel"
+            placeholder="Enter phone number"
+            name="phone"
+            onChange={this.props.onChange}
+            value={phone}
+          />
         </div>
         <div className="form-row">
-          <div className="form-group col-md">
-            <label htmlFor="inputTitle">Listing title {redStar}</label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputTitle"
-              name="title"
-              placeholder="Enter title to be displayed for this listing"
-              onChange={this.props.onChange}
-              value={title}
-            />
-          </div>
+          <FormGroupText
+            groupClass="col-md"
+            label="Listing title"
+            isRequired={true}
+            type="text"
+            placeholder="Enter title to be displayed for this listing"
+            name="title"
+            onChange={this.props.onChange}
+            value={title}
+          />
         </div>
         <div className="form-row">
           <div className="form-group col-lg">
