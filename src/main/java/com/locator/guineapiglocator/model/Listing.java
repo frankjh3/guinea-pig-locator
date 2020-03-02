@@ -97,8 +97,8 @@ public class Listing {
         return timeListed;
     }
 
-    public void setTimeListed(LocalDateTime dateListed) {
-        this.timeListed = LocalDateTime.now();
+    public void setTimeListed(LocalDateTime timeListed) {
+        this.timeListed = timeListed;
     }
 
     public boolean isActive() {

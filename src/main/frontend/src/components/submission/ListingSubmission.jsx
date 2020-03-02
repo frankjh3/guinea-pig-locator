@@ -10,12 +10,14 @@ class ListingSubmission extends Component {
       numGuineaPigs,
       listingType,
       description,
-      location,
       email,
       phone,
       title,
-      price
-    } = this.props.listing;
+      price,
+      state,
+      city,
+      zip
+    } = this.props;
     const redStar = <span style={{ color: "red" }}>*</span>;
     return (
       <React.Fragment>
@@ -55,7 +57,7 @@ class ListingSubmission extends Component {
             </div>
           </div>
           <div className="form-group col-sm">
-            <label htmlFor="inputPrice">Total asking price</label>
+            <label htmlFor="inputPrice">Total asking price (in dollars)</label>
             <input
               type="number"
               className="form-control"
@@ -90,11 +92,11 @@ class ListingSubmission extends Component {
               id="inputCity"
               name="city"
               placeholder="Enter city"
-              onChange={this.props.onLocationChange}
-              value={location.city}
+              onChange={this.props.onChange}
+              value={city}
             />
           </div>
-          <USState location={location} onChange={this.props.onLocationChange} />
+          <USState state={state} onChange={this.props.onChange} />
           <div className="form-group col-md-2">
             <label htmlFor="inputZip">Zip {redStar}</label>
             <input
@@ -103,8 +105,8 @@ class ListingSubmission extends Component {
               id="inputZip"
               name="zip"
               placeholder="Enter zip code"
-              onChange={this.props.onLocationChange}
-              value={location.zip}
+              onChange={this.props.onChange}
+              value={zip}
             />
           </div>
         </div>
@@ -177,9 +179,7 @@ class ListingSubmission extends Component {
 }
 
 ListingSubmission.propTypes = {
-  listing: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
-  onLocationChange: PropTypes.func.isRequired,
   onChangePage: PropTypes.func.isRequired
 };
 

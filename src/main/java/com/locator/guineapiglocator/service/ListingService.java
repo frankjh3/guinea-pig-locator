@@ -27,6 +27,7 @@ public class ListingService {
         for(GuineaPig guineaPig : listing.getGuineaPigs()) {
             guineaPig.setListing(listing);
             guineaPig.setId(null);
+            guineaPig.setAdopted(false);
         }
         return listingRepository.save(listing);
     }

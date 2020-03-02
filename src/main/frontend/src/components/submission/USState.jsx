@@ -13,7 +13,7 @@ class USState extends Component {
           className="form-control"
           name="state"
           onChange={this.props.onChange}
-          value={this.props.location.state}
+          value={this.props.state}
         >
           <option value="empty" disabled>
             Choose...
@@ -76,7 +76,7 @@ class USState extends Component {
 }
 
 USState.propTypes = {
-  location: PropTypes.object.isRequired,
+  state: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired
 };
 

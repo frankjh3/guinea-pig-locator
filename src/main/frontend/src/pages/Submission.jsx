@@ -6,29 +6,40 @@ import ListingSubmission from "../components/submission/ListingSubmission";
 
 class Submission extends Component {
   state = {
-    listing: {
-      numGuineaPigs: "",
-      mustAdoptTogether: false,
-      listingType: "HOME",
-      description: "",
-      location: {
-        city: "",
-        state: "empty",
-        zip: ""
-      },
-      email: "",
-      phone: "",
-      guineaPigs: [],
-      title: "",
-      price: ""
-    },
+    numGuineaPigs: "",
+    mustAdoptTogether: false,
+    listingType: "HOME",
+    description: "",
+    city: "",
+    state: "empty",
+    zip: "",
+    email: "",
+    phone: "",
+    guineaPigs: [],
+    title: "",
+    price: "",
     listingStep: true
   };
 
   handleSubmit = e => {
     e.preventDefault();
     axios
-      .post("/api/v1/listing", this.state.listing)
+      .post("/api/v1/listing", {
+        numGuineaPigs: this.state.numGuineaPigs,
+        mustAdoptTogether: this.state.mustAdoptTogether,
+        listingType: this.state.listingType,
+        description: this.state.description,
+        location: {
+          city: this.state.city,
+          state: this.state.state,
+          zip: this.state.zip
+        },
+        email: this.state.email,
+        phone: this.state.phone,
+        guineaPigs: this.state.guineaPigs,
+        title: this.state.title,
+        price: this.state.price
+      })
       .then(res => {
         console.log(res);
       })
@@ -55,28 +66,20 @@ class Submission extends Component {
 
   handleListingChange = e => {
     const { name } = e.target;
-
     let val = this.convertValueToCorrectType(e.target);
 
-    let listing = { ...this.state.listing };
-    listing[name] = val;
-    this.setState({ listing });
-
-    // if (name === "numGuineaPigs") {
-    //   this.changeNumGuineaPigs(val);
-    // }
+    this.setState({ [name]: val });
   };
 
   changeNumGuineaPigs = () => {
-    const curLength = this.state.listing.guineaPigs.length;
-    if (this.state.listing.numGuineaPigs !== curLength) {
-      let listing = { ...this.state.listing };
-
+    const curLength = this.state.guineaPigs.length;
+    if (this.state.numGuineaPigs !== curLength) {
+      let guineaPigs = this.state.guineaPigs;
       // increased number of guinea pigs - add empty guinea pig objects to state
-      if (this.state.listing.numGuineaPigs > curLength) {
-        for (let i = curLength; i < this.state.listing.numGuineaPigs; i++) {
-          listing.guineaPigs = [
-            ...listing.guineaPigs,
+      if (this.state.numGuineaPigs > curLength) {
+        for (let i = curLength; i < this.state.numGuineaPigs; i++) {
+          guineaPigs = [
+            ...guineaPigs,
             {
               id: i,
               name: "",
@@ -90,13 +93,13 @@ class Submission extends Component {
       }
       // decreased number of guinea pigs - remove from end
       else {
-        for (let i = this.state.listing.numGuineaPigs; i < curLength; i++) {
-          listing.guineaPigs.pop();
+        for (let i = this.state.numGuineaPigs; i < curLength; i++) {
+          guineaPigs.pop();
         }
       }
 
       this.setState({
-        listing: listing
+        guineaPigs: guineaPigs
       });
     }
   };
@@ -105,16 +108,14 @@ class Submission extends Component {
     const { name } = e.target;
     let val = this.convertValueToCorrectType(e.target);
 
-    let listing = { ...this.state.listing };
-    listing.guineaPigs[id][name] = val;
-    this.setState({ listing });
-  };
-
-  // change a value in location
-  handleLocationChange = e => {
-    let listing = { ...this.state.listing };
-    listing.location[e.target.name] = e.target.value;
-    this.setState({ listing });
+    this.setState({
+      guineaPigs: this.state.guineaPigs.map(guineaPig => {
+        if (guineaPig.id === id) {
+          guineaPig[name] = val;
+        }
+        return guineaPig;
+      })
+    });
   };
 
   changePage = () => {
@@ -131,8 +132,17 @@ class Submission extends Component {
       element = (
         <ListingSubmission
           onChange={this.handleListingChange}
-          onLocationChange={this.handleLocationChange}
-          listing={this.state.listing}
+          mustAdoptTogether={this.state.mustAdoptTogether}
+          numGuineaPigs={this.state.numGuineaPigs}
+          listingType={this.state.listingType}
+          description={this.state.description}
+          city={this.state.city}
+          state={this.state.state}
+          zip={this.state.zip}
+          email={this.state.email}
+          phone={this.state.phone}
+          title={this.state.title}
+          price={this.state.price}
           onChangePage={this.changePage}
         />
       );
@@ -140,7 +150,7 @@ class Submission extends Component {
       element = (
         <GuineaPigsSubmission
           onChange={this.handleGuineaPigChange}
-          guineaPigs={this.state.listing.guineaPigs}
+          guineaPigs={this.state.guineaPigs}
           onChangePage={this.changePage}
         />
       );

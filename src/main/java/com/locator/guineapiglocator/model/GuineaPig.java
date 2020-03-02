@@ -3,7 +3,6 @@ package com.locator.guineapiglocator.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * Model Guinea Pig in system after being listed for adoption.
@@ -13,7 +12,8 @@ public class GuineaPig {
 
     public enum Gender {
         MALE,
-        FEMALE
+        FEMALE,
+        UNKNOWN
     }
 
     public enum Breed {
@@ -30,15 +30,14 @@ public class GuineaPig {
     private boolean adopted;
 
     @Enumerated(EnumType.STRING)
-    @Column(length = 6)
+    @Column(length = 7)
     private Gender gender;
 
     @Enumerated(EnumType.STRING)
     @Column(length = 15)
     private Breed breed;
 
-    @Temporal(TemporalType.DATE)
-    private Date dob;
+    private String age;
 
     private boolean isNeutered;
 
@@ -52,14 +51,14 @@ public class GuineaPig {
                      boolean adopted,
                      Gender gender,
                      Breed breed,
-                     Date dob,
+                     String age,
                      boolean isNeutered) {
         this.id = id;
         this.name = name;
         this.adopted = adopted;
         this.gender = gender;
         this.breed = breed;
-        this.dob = dob;
+        this.age = age;
         this.isNeutered = isNeutered;
     }
 
@@ -106,12 +105,12 @@ public class GuineaPig {
         this.breed = breed;
     }
 
-    public Date getDob() {
-        return dob;
+    public String getAge() {
+        return age;
     }
 
-    public void setDob(Date dob) {
-        this.dob = dob;
+    public void setAge(String age) {
+        this.age = age;
     }
 
     public Listing getListing() {
@@ -138,7 +137,7 @@ public class GuineaPig {
                 ", adopted=" + adopted +
                 ", gender=" + gender +
                 ", breed=" + breed +
-                ", dob=" + dob +
+                ", age='" + age + '\'' +
                 ", isNeutered=" + isNeutered +
                 ", listing=" + listing +
                 '}';
