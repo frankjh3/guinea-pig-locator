@@ -15,7 +15,7 @@ class USState extends Component {
           onChange={this.props.onChange}
           value={this.props.state}
         >
-          <option value="empty" disabled>
+          <option value="" disabled>
             Choose...
           </option>
           <option value="AL">Alabama</option>

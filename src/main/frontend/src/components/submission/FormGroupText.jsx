@@ -6,7 +6,6 @@ class FormGroup extends Component {
   render() {
     const redStar = <span style={{ color: "red" }}>*</span>;
     const id = "input" + (this.props.id ? this.props.id : this.props.name);
-    console.log(id);
     return (
       <div className={"form-group " + this.props.groupClass}>
         <label htmlFor={id}>

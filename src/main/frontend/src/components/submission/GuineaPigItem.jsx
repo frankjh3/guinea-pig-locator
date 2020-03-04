@@ -5,7 +5,15 @@ import FormGroupText from "./FormGroupText";
 
 class GuineaPigItem extends Component {
   render() {
-    const { id, name, gender, isNeutered, age, breed } = this.props.guineaPig;
+    const {
+      id,
+      name,
+      gender,
+      isNeutered,
+      age,
+      breed,
+      required
+    } = this.props.guineaPig;
     const redStar = <span style={{ color: "red" }}>*</span>;
     return (
       <React.Fragment>
@@ -14,7 +22,7 @@ class GuineaPigItem extends Component {
           <FormGroupText
             groupClass="col-sm"
             label="Name"
-            isRequired={false}
+            isRequired={required.includes("name")}
             type="text"
             placeholder="Enter name of guinea pig"
             name="name"
@@ -61,7 +69,7 @@ class GuineaPigItem extends Component {
           <FormGroupText
             groupClass="col-sm"
             label="Approximate age (specify weeks/months/years)"
-            isRequired={true}
+            isRequired={required.includes("age")}
             type="text"
             placeholder="Enter approximate age"
             name="age"

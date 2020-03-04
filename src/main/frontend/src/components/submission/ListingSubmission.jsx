@@ -17,9 +17,14 @@ class ListingSubmission extends Component {
       price,
       state,
       city,
-      zip
+      zip,
+      required
     } = this.props;
     const redStar = <span style={{ color: "red" }}>*</span>;
+
+    if (this.props.showModal) {
+    }
+
     return (
       <React.Fragment>
         <h1>Create new listing</h1>
@@ -28,7 +33,7 @@ class ListingSubmission extends Component {
           <FormGroupText
             groupClass="col-sm"
             label="Number of guinea pigs"
-            isRequired={true}
+            isRequired={required.includes("numGuineaPigs")}
             type="number"
             placeholder="Enter number of guinea pigs"
             name="numGuineaPigs"
@@ -56,7 +61,7 @@ class ListingSubmission extends Component {
           <FormGroupText
             groupClass="col-sm"
             label="Total asking price (in dollars)"
-            isRequired={false}
+            isRequired={required.includes("price")}
             type="number"
             placeholder="Enter asking price"
             name="price"
@@ -82,7 +87,7 @@ class ListingSubmission extends Component {
           <FormGroupText
             groupClass="col-md-6"
             label="City"
-            isRequired={true}
+            isRequired={required.includes("city")}
             type="text"
             placeholder="Enter city"
             name="city"
@@ -93,7 +98,7 @@ class ListingSubmission extends Component {
           <FormGroupText
             groupClass="col-md-2"
             label="Zip"
-            isRequired={true}
+            isRequired={required.includes("state")}
             type="text"
             placeholder="Enter zip code"
             name="zip"
@@ -105,7 +110,7 @@ class ListingSubmission extends Component {
           <FormGroupText
             groupClass="col-md-7"
             label="Email"
-            isRequired={true}
+            isRequired={required.includes("email")}
             type="email"
             placeholder="Enter email"
             name="email"
@@ -115,7 +120,7 @@ class ListingSubmission extends Component {
           <FormGroupText
             groupClass="col-md-5"
             label="Phone number"
-            isRequired={false}
+            isRequired={required.includes("phone")}
             type="tel"
             placeholder="Enter phone number"
             name="phone"
@@ -127,7 +132,7 @@ class ListingSubmission extends Component {
           <FormGroupText
             groupClass="col-md"
             label="Listing title"
-            isRequired={true}
+            isRequired={required.includes("title")}
             type="text"
             placeholder="Enter title to be displayed for this listing"
             name="title"
@@ -148,15 +153,19 @@ class ListingSubmission extends Component {
             ></textarea>
           </div>
         </div>
-        <button
-          type="button"
-          style={{ marginBottom: "20px" }}
-          className="btn-lg btn-primary 
+        <div className="form-row justify-content-between">
+          <p style={{ color: "red" }}>{this.props.errorText}</p>
+          <button
+            type="button"
+            style={{ marginBottom: "20px" }}
+            className="btn-md btn-primary 
           float-right"
-          onClick={this.props.onChangePage}
-        >
-          Enter guinea pig information
-        </button>
+            onClick={this.props.onChangePage}
+          >
+            Enter guinea pig information
+          </button>
+        </div>
+
         <p />
       </React.Fragment>
     );

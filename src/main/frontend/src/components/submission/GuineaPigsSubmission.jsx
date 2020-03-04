@@ -20,18 +20,18 @@ class GuineaPigSubmission extends Component {
         <div className="form-row justify-content-between">
           <button
             type="button"
-            className="btn-lg btn-secondary 
+            className="btn-md btn-secondary 
           pb-20"
             style={{ marginBottom: "20px" }}
             onClick={this.props.onChangePage}
           >
             Previous
           </button>
-
+          <p style={{ color: "red" }}>{this.props.errorText}</p>
           <input
             type="submit"
             value="Submit"
-            className="btn-lg btn-primary
+            className="btn-md btn-primary
           pb-20"
             style={{ marginBottom: "20px" }}
           ></input>
