@@ -15,8 +15,8 @@ class SubmissionModal extends Component {
           </Modal.Header>
           <Modal.Body>
             Congratulations! You will be notified by people interested in
-            adopting your guinea pigs. Click below to return home (and refresh
-            the page to view your listing).
+            adopting your guinea pigs. Click below to return home (and then
+            please refresh the page to view your listing).
           </Modal.Body>
           <Modal.Footer>
             <Link

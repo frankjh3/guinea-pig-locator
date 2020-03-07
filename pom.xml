@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.locator</groupId>
 	<artifactId>guinea-pig-locator</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0</version>
 	<name>guinea-pig-locator</name>
 	<description>School project creating a web page for people to post guinea pigs available for adoption</description>
 

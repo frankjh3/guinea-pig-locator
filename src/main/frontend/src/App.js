@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
 
 import Home from "./pages/Home";
@@ -27,18 +27,28 @@ class App extends React.Component {
         <div className="App">
           <div className="container-fullwidth">
             <Header />
-            <Route
-              exact
-              path="/"
-              render={props => (
-                <React.Fragment>
-                  <Home listings={this.state.listings} />
-                </React.Fragment>
-              )}
-            />
-            <Route exact path="/submission" component={Submission} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/listing" component={Listing} />
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={props => (
+                  <React.Fragment>
+                    <Home listings={this.state.listings} />
+                  </React.Fragment>
+                )}
+              />
+              <Route exact path="/submission" component={Submission} />
+              <Route exact path="/about" component={About} />
+              <Route
+                exact
+                path="/listing/:id"
+                render={props => (
+                  <React.Fragment>
+                    <Listing {...props} />
+                  </React.Fragment>
+                )}
+              />
+            </Switch>
           </div>
         </div>
       </Router>

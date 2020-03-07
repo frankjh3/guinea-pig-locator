@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Handle storing, retrieving, updating, and deleting guinea pigs from guineaPigRepository
@@ -23,6 +24,14 @@ public class GuineaPigService {
 
     public GuineaPig addGuineaPig(GuineaPig guineaPig) {
         return guineaPigRepository.save(guineaPig);
+    }
+
+    public void markAsAdopted(int id) {
+        Optional<GuineaPig> guineaPig = this.guineaPigRepository.findById(id);
+        guineaPig.map(gp -> {
+                    gp.setAdopted(true);
+                    return guineaPigRepository.save(gp);
+                });
     }
 
     public List<GuineaPig> getAllGuineaPigs() {

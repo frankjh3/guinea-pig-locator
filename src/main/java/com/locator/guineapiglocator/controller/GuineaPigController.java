@@ -2,6 +2,7 @@ package com.locator.guineapiglocator.controller;
 
 import com.locator.guineapiglocator.model.GuineaPig;
 import com.locator.guineapiglocator.service.GuineaPigService;
+import com.locator.guineapiglocator.service.ListingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
@@ -17,15 +18,23 @@ import java.util.List;
 public class GuineaPigController {
 
     private final GuineaPigService guineaPigService;
+    private final ListingService listingService;
 
     @Autowired
-    public GuineaPigController(GuineaPigService guineaPigService) {
+    public GuineaPigController(GuineaPigService guineaPigService, ListingService listingService) {
         this.guineaPigService = guineaPigService;
+        this.listingService = listingService;
     }
 
     @PostMapping
     public void addGuineaPig(@Valid @NonNull @RequestBody GuineaPig guineaPig) {
         this.guineaPigService.addGuineaPig(guineaPig);
+    }
+
+    @PostMapping(path = "{id}")
+    public void markAsAdopted(@PathVariable("id") int id) {
+        this.guineaPigService.markAsAdopted(id);
+        this.listingService.checkAllAdopted(guineaPigService.getGuineaPigByID(id).getListing().getId());
     }
 
     @GetMapping

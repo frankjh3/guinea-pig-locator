@@ -42,6 +42,10 @@ public class Listing {
 
     private int price;
 
+    // for now just store picture as a random picture
+    // (there are 10 total so it will be from 0-9)
+    private int pictureNum;
+
     @Enumerated(EnumType.STRING)
     @Column(length = 8)
     private ListingType listingType;
@@ -65,6 +69,7 @@ public class Listing {
                    String phone,
                    String title,
                    int price,
+                   int pictureNum,
                    ListingType listingType,
                    List<GuineaPig> guineaPigs) {
         this.id = id;
@@ -80,6 +85,7 @@ public class Listing {
         this.price = price;
         this.listingType = listingType;
         this.guineaPigs = guineaPigs;
+        this.pictureNum = pictureNum;
     }
 
     public Listing() {
@@ -189,6 +195,13 @@ public class Listing {
         this.price = price;
     }
 
+    public void setPictureNum(int pictureNum) {
+        this.pictureNum = pictureNum;
+    }
+
+    public int getPictureNum() {
+        return pictureNum;
+    }
 
     @Override
     public String toString() {
@@ -203,9 +216,11 @@ public class Listing {
                 ", phone='" + phone + '\'' +
                 ", title='" + title + '\'' +
                 ", price=" + price +
+                ", pictureNum=" + pictureNum +
                 ", listingType=" + listingType +
                 ", location=" + location +
                 ", guineaPigs=" + guineaPigs +
                 '}';
     }
+
 }

@@ -13,7 +13,8 @@ class ListingPreview extends Component {
       numGuineaPigs,
       timeListed,
       guineaPigs,
-      title
+      title,
+      pictureNum
     } = this.props.listing;
     return (
       <div className="col-md-4 mb-4">
@@ -21,7 +22,8 @@ class ListingPreview extends Component {
           <div className="card-header mb-2">
             <img
               className="card-img-top"
-              src="pigPicture.jpg"
+              // {for now, just use random picture of guinea pig. In future, add storing pictures on s3}
+              src={"guinea_pig_pictures/guinea_pig_" + pictureNum + ".jpg"}
               alt="Card image cap"
             />
           </div>

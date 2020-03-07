@@ -29,9 +29,14 @@ public class ListingController {
         this.listingService.addListing(listing);
     }
 
+    @PostMapping(path = "{id}")
+    public void markAsAdopted(@PathVariable("id") int id) {
+        this.listingService.markAllAdopted(id);
+    }
+
     @GetMapping
-    public List<Listing> getAllListings() {
-        return this.listingService.getAllListings();
+    public List<Listing> getActiveListings() {
+        return this.listingService.getActiveListings();
     }
 
     @GetMapping(path = "{id}")

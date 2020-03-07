@@ -22,7 +22,7 @@ class DatePosted extends Component {
   }
 
   convertTimestamp = () => {
-    const timestampObj = new Date(this.props.timeListed);
+    const timestampObj = new Date(this.props.timeListed + "Z");
     const dateDiff = this.state.currentDate - timestampObj;
     let timeAgo;
     if (dateDiff < 1000 * 60) {

@@ -127,7 +127,7 @@ class Submission extends Component {
 
   validateGuineaPigs = () => {
     for (const guineaPig of this.state.guineaPigs) {
-      if (guineaPig.age === "") {
+      if (guineaPig.age === "" || guineaPig.name === "") {
         return true;
       }
     }
@@ -148,7 +148,7 @@ class Submission extends Component {
             breed: "UNKNOWN",
             age: "",
             isNeutered: false,
-            required: ["gender", "age", "isNeutered"]
+            required: ["gender", "age", "isNeutered", "name"]
           });
         }
       }
